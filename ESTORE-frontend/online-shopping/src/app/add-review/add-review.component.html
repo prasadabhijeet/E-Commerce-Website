@@ -1,0 +1,38 @@
+<div class="container">
+
+  <br/>
+  <form #reviewForm="ngForm" (ngSubmit)="onSubmit(reviewForm)">
+    <div class="form-group">
+      <legend class="">Rating:</legend>
+      <div class=" form-check form-check-inline">
+        <input class="form-check-input" required type="radio" [(ngModel)]="model.rating" id="first" name="rating" value="1">
+        <label class="form-check-label" for="first">1</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" required type="radio" [(ngModel)]="model.rating" id="second" name="rating" value="2">
+        <label class="form-check-label" for="second">2</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" required type="radio" [(ngModel)]="model.rating" id="third" name="rating" value="3">
+        <label class="form-check-label" for="third">3</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" required type="radio" [(ngModel)]="model.rating" id="fourth" name="rating" value="4">
+        <label class="form-check-label" for="fourth">4</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" required type="radio" [(ngModel)]="model.rating" id="fifth" name="rating" value="5">
+        <label class="form-check-label" for="fifth">5</label>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" required rows="6" [(ngModel)]="model.description"
+                name="description"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!reviewForm.valid">Send</button>
+  </form>
+
+</div>

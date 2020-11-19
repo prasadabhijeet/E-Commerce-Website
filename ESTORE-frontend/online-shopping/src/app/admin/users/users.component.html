@@ -1,0 +1,68 @@
+<!--================Cart Area =================-->
+<section class="cart_area section_padding">
+  <div class="container">
+    <div class="cart_inner">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">First Name</th>
+              <th scope="col">lastName</th>
+              <th scope="col">Email</th>
+              <th scope="col">Birth Date</th>
+              <th scope="col">Role</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>
+                <div class="media">
+                  <div class="media-body">
+                    <p>{{ user.firstName }}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="media">
+                  <div class="media-body">
+                    <p>{{ user.lastName }}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="media">
+                  <div class="media-body">
+                    <p>{{ user.email }}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="media">
+                  <div class="media-body">
+                    <p>{{user.birthDate | date: 'MM/dd/yyyy'}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="media">
+                  <div class="media-body">
+                    <p>{{user.role }}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="media">
+                  <div class="media-body">
+                    <button class="btn btn-success btn-xs" (click)="approveUser(user)">Approve</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+<!--================End Cart Area =================-->

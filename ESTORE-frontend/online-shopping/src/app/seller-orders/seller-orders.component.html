@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Orders</h1>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Client</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders">
+      <td>{{ order.purchaseDate | date:'medium' }}</td>
+      <td>{{order.totalPrice | currency: 'USD'}}</td>
+      <td>{{order.buyer.firstName}} {{order.buyer.lastName}}</td>
+      <td>{{order.status}}</td>
+      <td>
+        <div class="button-group-area">
+          <a [routerLink]="['/seller/orders', order._id]" class="genric-btn primary radius">View</a>
+          <button [disabled]="order.status !== orderStatus.PENDING" [ngClass]="{'disable' : order.status !== orderStatus.PENDING}"
+                  class="genric-btn primary radius" type="button" (click)="ship(order._id)">Ship</button>
+          <button [disabled]="order.status !== orderStatus.SHIPPED" [ngClass]="{'disable' : order.status !== orderStatus.SHIPPED}"
+                  class="genric-btn primary radius" type="button" (click)="deliver(order._id)">Deliver</button>
+          <button [disabled]="order.status === orderStatus.CANCELED" [ngClass]="{'disable' : order.status === orderStatus.CANCELED}"
+                  class="genric-btn danger radius" type="button" (click)="cancel(order._id)">Cancel</button>
+        </div>
+
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>

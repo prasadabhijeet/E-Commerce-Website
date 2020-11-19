@@ -1,0 +1,70 @@
+<!--================Cart Area =================-->
+<section class="cart_area section_padding">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of products">
+                            <td>
+                                <div class="media">
+                                    <div class="media-body">
+                                        <p>{{ product.title }}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Review Description</th>
+                                        <th scope="col">Rating</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let review of product.reviews">
+                                        <td>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p>{{ review.description }}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p>{{ review.rating }}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td *ngIf="review.approved == 1">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p>Approved</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td *ngIf="review.approved == 0">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <button class="btn btn-success btn-xs" (click)="approveReview(product, review)"
+                                                     >Approve</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->

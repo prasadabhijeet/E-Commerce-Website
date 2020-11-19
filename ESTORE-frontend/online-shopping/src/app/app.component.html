@@ -1,0 +1,218 @@
+<!-- <app-masterpage></app-masterpage> -->
+
+
+<header>
+  <!-- Header Start -->
+  <div class="header-area">
+    <div class="main-header ">
+      <div class="header-top top-bg d-none d-lg-block">
+        <div class="container-fluid">
+          <div class="col-xl-12">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="header-info-left d-flex">
+                <div class="flag">
+                  <img src="assets/img/icon/header_icon.png" alt="">
+                </div>
+                <div class="select-this">
+                  <form action="#">
+                    <div class="select-itms">
+                      <select name="select" id="select1">
+                        <option value="">USA</option>
+                        <!-- <option value="">SPN</option>
+                        <option value="">CDA</option>
+                        <option value="">USD</option> -->
+                      </select>
+                    </div>
+                  </form>
+                </div>
+                <ul class="contact-now">
+                  <li></li>
+                </ul>
+              </div>
+              <div [ngSwitch]="userRole" class="header-info-right">
+                <ul>
+
+                  <span *ngSwitchCase="userRoles.Seller">
+                    <li><a [routerLink]="'/seller/products'">My Products</a></li>
+                    <li><a [routerLink]="'/seller/orders'">Orders</a></li>
+                  </span>
+                  <span *ngSwitchCase="userRoles.Admin">
+                    <li><a [routerLink]="'/approval'">Approvals</a></li>
+                  </span>
+                  <span *ngSwitchCase="userRoles.Buyer">
+                    <li><a [routerLink]="'/orders'">Orders</a></li>
+                    <li><a [routerLink]="'/shop'">Shopping</a></li>
+                    <li><a [routerLink]="'/cart'">Cart</a></li>
+                    <li><a [routerLink]="'/checkout'">Checkout</a></li>
+                  </span>
+                  <span *ngSwitchDefault>
+                    <li><a [routerLink]="'/shop'">Shopping</a></li>
+                    <li><a [routerLink]="'/cart'">Cart</a></li>
+                    <li><a [routerLink]="'/checkout'">Checkout</a></li>
+                  </span>
+                  <span *ngIf="loggedUser">
+                    <li>
+                      <a [routerLink]="'/home'">| Hi, {{loggedUser.firstName}} {{loggedUser.lastName}}</a>
+                    </li>
+                  </span>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-bottom  header-sticky">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <!-- Logo -->
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
+              <div class="logo">
+                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
+              <!-- Main-menu -->
+              <div class="main-menu f-right d-none d-lg-block">
+                <nav>
+                  <ul id="navigation">
+                    <li><a [routerLink]="'/home'">Home</a></li>
+                    <li><a [routerLink]="'/products'">Shop</a></li>
+
+
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+            <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
+              <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
+                <!--                                  <li class="d-none d-xl-block">-->
+                <!--                                      <div class="form-box f-right ">-->
+                <!--                                          <input type="text" name="Search" placeholder="Search products">-->
+                <!--                                          <div class="search-icon">-->
+                <!--                                              <i class="fas fa-search special-tag"></i>-->
+                <!--                                          </div>-->
+                <!--                                      </div>-->
+                <!--                                   </li>-->
+                <!--                                  <li class=" d-none d-xl-block">-->
+                <!--                                      <div class="favorit-items">-->
+                <!--                                          <i class="far fa-heart"></i>-->
+                <!--                                      </div>-->
+                <!--                                  </li>-->
+                <li>
+                  <div class="shopping-card" [attr.quantity]="cartQuantity">
+                    <a [routerLink]="'/cart'"><i class="fas fa-shopping-cart"></i></a>
+
+                  </div>
+                </li>
+                <li class="d-none d-lg-block" *ngIf="!isAuthenticated">
+                  <a [routerLink]="'/login'" class="btn header-btn">Sign in</a>
+                </li>
+                <li class="d-none d-lg-block" *ngIf="isAuthenticated">
+                  <a href="" (click)="onLogOut()" class="btn header-btn">Sign out</a>
+                </li>
+              </ul>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="col-12">
+              <div class="mobile_menu d-block d-lg-none"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header End -->
+</header>
+
+<router-outlet></router-outlet>
+
+<footer>
+
+  <!-- Footer Start-->
+  <div class="footer-area">
+    <div class="container">
+      <div class="row d-flex justify-content-between">
+        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+          <div class="single-footer-caption mb-50">
+            <div class="single-footer-caption mb-30">
+              <!-- logo -->
+              <div class="footer-logo">
+                <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+              </div>
+              <div class="footer-tittle">
+                <div class="footer-pera">
+                  <p>Free Delivery on orders over $50! Discover the latest in men's fashion and women's clothing online & shop from over many styles with ESTORE.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
+          <div class="single-footer-caption mb-50">
+            <div class="footer-tittle">
+              <h4>Quick Links</h4>
+              <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#"> Offers & Discounts</a></li>
+                <li><a href="#"> Get Coupon</a></li>
+                <li><a href="#"> Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
+          <div class="single-footer-caption mb-50">
+            <div class="footer-tittle">
+              <h4>New Products</h4>
+              <ul>
+                <li><a href="#">Woman Cloth</a></li>
+                <li><a href="#">Fashion Accessories</a></li>
+                <li><a href="#"> Man Accessories</a></li>
+            
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+          <div class="single-footer-caption mb-50">
+            <div class="footer-tittle">
+              <h4>Support</h4>
+              <ul>
+                <li><a href="#">Frequently Asked Questions</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Report a Payment Issue</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer bottom -->
+      <div class="row">
+        <div class="col-xl-7 col-lg-7 col-md-7">
+          <div class="footer-copy-right">
+            <p>
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+              All rights reserved
+              </p>
+          </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-5">
+          <div class="footer-copy-right f-right">
+            <!-- social -->
+            <div class="footer-social">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fas fa-globe"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer End-->
+
+</footer>

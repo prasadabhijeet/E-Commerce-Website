@@ -1,0 +1,44 @@
+<!-- slider Area Start-->
+<div class="slider-area ">
+    <!-- Mobile Menu -->
+    <div class="single-slider slider-height2 d-flex align-items-center"
+         [ngStyle]="{'background-image': 'url(assets/img/hero/category.jpg)'}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>Approvals</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- slider Area End-->
+  <!--================Checkout Area =================-->
+<section class="checkout_area">
+    <div class="container">
+        <div class="returning_customer">
+            <p>
+                Select Approval Type:
+            </p>
+            <form class="row contact_form" [formGroup]="approvalForm">
+                <div class="col-md-12 form-group p_star">
+                    <select name="approvalType" formControlName="approvalType" class="form-control">
+                        <option value="0" selected>Select Approval Type...</option>
+                        <option *ngFor="let item of approvalTypes | enumToArray" [value]="item.index">{{item.name}}</option>
+                    </select>
+                </div>
+            </form>
+            <div [ngSwitch]="selectedApprovalType">
+                <div *ngSwitchCase="approvalTypes.Seller">
+                    <app-users></app-users>
+                </div>
+                <div *ngSwitchCase="approvalTypes.Review">
+                    <app-reviews></app-reviews>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  
